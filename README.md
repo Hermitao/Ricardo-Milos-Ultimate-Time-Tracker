@@ -1,2 +1,1 @@
-# The Ultimate Time Tracker
-This is The Ultimate Time Tracker.
+# Ricardo Milos Ultimate Time Tracker
