@@ -24,6 +24,18 @@ import time
 import datetime
 import sys
 import os
+'''import pyglet
+
+song = pyglet.resource.media('thesong.mp3')
+song.play()
+pyglet.app.run()'''
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+from pygame import mixer
+
+mixer.init()
+mixer.music.load('thesong.ogg')
+mixer.music.play()
 
 clear = lambda: os.system('cls')
 
