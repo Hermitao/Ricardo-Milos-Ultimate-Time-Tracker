@@ -151,7 +151,7 @@ except FileNotFoundError:
         
 projects = [x.strip() for x in projectsFileContents]
 
-print("Which project do you want to work on?")
+print("What project do you want to work on?")
 for x in range( len(projects) ):
      print (projects[x])
 myInput = input("\n")
