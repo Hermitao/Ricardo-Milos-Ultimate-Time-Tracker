@@ -34,7 +34,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 from pygame import mixer
 
 mixer.init()
-mixer.music.load('thesong.ogg')
+mixer.music.load(os.path.join(sys.path[0], 'thesong.ogg'))
 mixer.music.play(-1)
 
 clear = lambda: os.system('cls')
@@ -51,10 +51,11 @@ def WriteFormattedTime():
 
 # store time data
 def WriteToFile():
-    with open(myInput + ".xml", "r+") as f:
+    with open(os.path.join(sys.path[0], myInput + ".xml"), "r+") as f:
         f.seek(0)
         f.write(str(time.time() - startTime))
 
+clearScreen()
 sys.stdout.write("""
 
                                        .***,,*,*,**,,,,,,,*********************************************/((/***,,*((*.                       
@@ -142,10 +143,10 @@ projects = None
 projectsFileContents = None
 
 try:
-    with open("Projects.xml", "r+") as projectsFile:
+    with open(os.path.join(sys.path[0], "Projects.xml"), "r+") as projectsFile:
         projectsFileContents = projectsFile.readlines()
 except IOError:
-    with open("Projects.xml", "w+") as projectsFile:
+    with open(os.path.join(sys.path[0], "Projects.xml"), "w+") as projectsFile:
         projectsFileContents = projectsFile.readlines()
 
         
@@ -163,15 +164,15 @@ contents = None
 
 if ((myInput + "\n") not in projectsFileContents):
     projects.append(myInput)
-    with open("Projects.xml", "a") as projectsFile:
+    with open(os.path.join(sys.path[0], "Projects.xml"), "a") as projectsFile:
         projectsFile.write(myInput + "\n")
 
 # read or create file for elapsed time storage
 try:
-    with open(myInput + ".xml", "r+") as f:
+    with open(os.path.join(sys.path[0], myInput + ".xml"), "r+") as f:
         contents = f.read()
 except IOError:
-    with open(myInput + ".xml", "w+") as f:
+    with open(os.path.join(sys.path[0], myInput + ".xml"), "w+") as f:
         contents = f.read()
 
 '''try:
