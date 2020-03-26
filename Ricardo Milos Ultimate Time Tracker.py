@@ -48,6 +48,10 @@ def clearScreen():
 def WriteFormattedTime():
     formattedTime = datetime.timedelta( seconds=(int(time.time() - startTime)) )
     return str(formattedTime)
+def WriteCurrentFormattedTime():
+    formattedTime = datetime.timedelta( seconds=(int(time.time() - startSessionTime)) )
+    return str(formattedTime)
+	
 
 # store time data
 def WriteToFile():
@@ -152,12 +156,13 @@ except IOError:
         
 projects = [x.strip() for x in projectsFileContents]
 
-print("What project do you want to work on?")
+print("What project do you want to work on?\n")
 for x in range( len(projects) ):
      print (projects[x])
 myInput = input("\n")
 
 startTime = time.time()
+startSessionTime = time.time()
 
 f = None
 contents = None
@@ -187,7 +192,8 @@ if (contents != ""):
 
 while True:
     WriteToFile()
-    sys.stdout.write("\r%s" % WriteFormattedTime())
+    sys.stdout.write("\r%s - Current session   " % WriteCurrentFormattedTime())
+    sys.stdout.write("%s - Total time " % WriteFormattedTime())
     sys.stdout.flush()
     time.sleep(1)
     
